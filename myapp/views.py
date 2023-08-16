@@ -57,7 +57,14 @@ def create_task( request ):
     else: 
         title = request.POST['title']
         description = request.POST['description']
-        project_id = 1
+        project_id = request.POST['project_id']
         Task.objects.create(title=title, description=description, project_id=project_id)
         return redirect('/tasks')
     
+def tasks_project(request, project_id):
+    project = Project.objects.get(id=project_id)
+    tasks = Task.objects.all().filter(project_id = project_id)
+    return render(request,'projects/tasks.html', {
+        'project': project.name,
+        'tasks': tasks
+    })

@@ -1,12 +1,12 @@
 {% extends 'layouts/base.html' %}
 
-<h1>{{ title }}</h1>
 
 {% block content %}
+<h1 class="row m-3">{{ title }}</h1>
 {% for project in projects %}
 
-<article>
-    <h2>{{ project.name }}</h2>
+<article class="row m-auto">
+    <h2>{{ project.name }} <a href="task_project/{{project.id}}">👁</a>  </h2>
 </article>
 
 {%endfor %}
